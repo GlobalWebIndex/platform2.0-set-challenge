@@ -2,7 +2,7 @@ export const dummyListData = [
   {
     name: "Chart 1",
     created_at: 1631530148312,
-    modified_at: 1631530148312,
+    modified_at: 1631530147312,
   },
   {
     name: "Chart 2",
