@@ -5,7 +5,6 @@
 ### Describe the test scenarios and automate them
 
 In this assigment you need to implement a E2E testing of your taste based on a preexisting micro application. Instructions on how to run the micro application can be found right below.
-Please take your time with the assignment, we think it should not take more than 6 hours.
 
 ### `My Charts` Micro application
 
@@ -14,7 +13,7 @@ Charts are a central piece of our platform. `My Charts` is a small app that allo
 - dummy server with a single endpoint and
 - a 3-page web interface where the e2e testing should only take place on the first page  
 
-### Technical stuff
+### Setup
 
 In order to be able to run the application locally you have to:
 
@@ -31,68 +30,37 @@ We prefer using the cypress e2e framework but any tool of choice would do.
 
 ### QA Testing challenge
 
-Provide Functional E2E test suite using your UI automation framework of choice.
+Please provide E2E & API testing for the `My Charts` app and endpoints.
 
-We consider the following test scenarios:
-
-1. ### Frontend automation test on the following
+1. #### Frontend / E2E automation test on the following
 
     Please provide Functional E2E test suite using your UI automation framework of choice.
 
     Note that we have omitted a lot of details in this description on what kind of tests should be implemented and how. We hope you will fill these details in and prove to us that you are aware of industry best practices and that you also follow them. In your code, we would like to see your code structure, test design, and test strategy.
 
-2. ### API test
+2. #### API test
 
     The below endpoint is responsible for fetching the charts.
     | URL | `http://localhost:3000/api/charts` |
     | --- | --- |
     | Method | GET |
+    
+    | Param | Values | Description|
+    | --- | --- | --- |
+    | orderBy | dateCreated | Order results based on their creation date |
+    | orderBy | dateModified | Order results based on their modified date |
+    | orderBy | name | Order results based on their name |
+    | order | desc / asc | Specify ascending or descending order |
 
-    Make sure you handle the below with your E2E framework:
-    1. Success response
-        1. Code: 200
-        2. Content: `[
-  {
-    name: "Chart 1",
-    created_at: 1631530148312,
-    modified_at: 1631530148312,
-  },
-  {
-    name: "Chart 2",
-    created_at: 1617010419094,
-    modified_at: 1627284724744,
-  },
-  {
-    name: "Test 3",
-    created_at: 1626174889659,
-    modified_at: 1626180305757,
-  },
-  {
-    name: "My awesome test 4",
-    created_at: 1622454043335,
-    modified_at: 1622454043335,
-  },
-  {
-    name: "Chart 5",
-    created_at: 1622453396409,
-    modified_at: 1622453396409,
-  },
-]`
-    2. Error response (404):
-        | URL | `http://localhost:3000/api/charts1` |
-        | --- | --- |
-        | Code | 404 |
-        | Content | `Cannot GET /api/charts1` |
-    3. Error response (500):
-        | URL | `http://localhost:3000/api/charts?orderBy=dateCreated&order=desc` |
-        | --- | --- |
-        | Code | 500 |
-        | Content | `{"error": "Currently no order by datecreated descending has been implemented"}`|
-    4. Error response (400):
-        | URL | `http://localhost:3000/api/charts?orderBy=chartType` |
-        | --- | --- |
-        | Code | 400 |
-        | Content | `{"error": "Please check your request parameters"}`|
+
+    #### Responses
+
+    | Code | Description |
+    | --- | --- |
+    | 200 | OK ```[{ name: string, created_at: timestamp, modified_at: timestamp}]``` |
+    | 400 | Client Error |
+    | 404 | Not Found  |
+    | 500 | Server Error |
 
 In case you are not able to implement something you would normally implement for time reasons, make it clear with a comment.
 Feel free to ask questions if something is not clear, please give your best shot on this task.
