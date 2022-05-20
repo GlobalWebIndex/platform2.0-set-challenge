@@ -1,4 +1,4 @@
-# GWI QA Engineering Challenge
+# GWI QA Engineering Manager Challenge
 ## Exercise: Charts page testing
 
 ### Describe the test scenarios and automate them
