@@ -37,14 +37,9 @@ We consider the following test scenarios:
 
 1. ### Frontend automation test on the following
 
-    1. The first page of the micro application
-        1. Search functionality works
-        2. Charts are displayed properly
-        3. Clicking on chart table header sorts the table
-        4. Clicking `Create a chart` button opens Page2
-    2. The second page of the micro application
-        1. Make sure navigation takes place
-        2. Make sure Page 2 is rendered
+    Please provide Functional E2E test suite using your UI automation framework of choice.
+
+    Note that we have omitted a lot of details in this description on what kind of tests should be implemented and how. We hope you will fill these details in and prove to us that you are aware of industry best practices and that you also follow them. In your code, we would like to see your code structure, test design, and test strategy.
 
 2. ### API test
 
