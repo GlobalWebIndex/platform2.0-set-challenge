@@ -1,0 +1,15 @@
+{
+  "pluginsFile": false,
+  "integrationFolder": "cypress/integration",
+  "baseUrl": "http://localhost:3000",
+  "numTestsKeptInMemory": 5,
+  "screenshotsFolder": "images",
+  "video": false,
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "configFile": "reporter-config.json"
+  },
+  "retries": {
+      "runMode": 2
+  }
+}
