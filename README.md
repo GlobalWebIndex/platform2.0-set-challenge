@@ -104,10 +104,10 @@ In all cases (UI - API) we are not asserting hardcoded values rather than implem
 ### How to execute test suite
 
 1. **Scripts in package.json**
-    * npm run cy:run:<browserTyoe>: This will execute the test suite (against firefox or chrome if we want to test cross browser testing compatibility)
-    * npm run report:merge: This will merge mochawesome reports into one json file
-    * npm run report:generate: This will generate HTML from JSON
-    * nrpm run report:copyScreenshots: This will copy cypress screenshots (for failed tests) to the needed directory (HTML Reports)
+    * ```npm run cy:run:<browserType>```: This will execute the test suite (against firefox or chrome if we want to test cross browser testing compatibility)
+    * ```npm run report:merge```: This will merge mochawesome reports into one json file
+    * ```npm run report:generate```: This will generate HTML from JSON
+    * ```npm run report:copyScreenshots```: This will copy cypress screenshots (for failed tests) to the needed directory (HTML Reports)
 
 For reporting there are other possibilities and by far the one we use is ReportPortal.io which is a realtime monitoring platform 
 
