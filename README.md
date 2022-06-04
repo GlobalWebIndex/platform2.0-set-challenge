@@ -68,3 +68,55 @@ Feel free to ask questions if something is not clear, please give your best shot
 ### Submission
 
 Just a make a PR to the current repo! Good luck, potential colleague!
+
+## E2E UI - API Test Suite
+
+We use Cypress for E2E UI - API Tests but we cover only functional testing (we could integrate visual or accessibility testing apis so we can have non functional testing covered as well but we wanted to stick to functional testing).  
+
+Lets review the test plan we created for the chart application:
+
+1. ```api.spec.js```: We test multiple cases with cy.request
+    * Get graphs by date created on ascending order
+    * Get graphs by date created on descending order
+    * Get graphs by date modified ascending order
+    * Get graphs by date modified descending order
+    * Get graphs by name ascending order
+    * Get graphs by name descending order
+    * Test 404 Response
+
+2. ```search.spec.js```: We test from UI the following cases
+    * Search for specific chart
+    * Clear search
+
+3. ```sort.spec.js```: Following the API tests we created we have implemented from UI the sorting of the graphs table
+    * Sort by name
+    * Sort by creation date
+    * Sort by modified date
+
+**Products Bugs**
+
+1. Create a graph is not possible
+2. API Test: Get graphs by date modified on descending order: Gives 500 Internal Server Error
+3. UI Test: Sort by modified date: The column is not sorted correctly
+
+In all cases (UI - API) we are not asserting hardcoded values rather than implementing a function to properly validate that appropriate data are calculated
+
+### How to execute test suite
+
+1. **Scripts in package.json**
+    * npm run cy:run:<browserTyoe>: This will execute the test suite (against firefox or chrome if we want to test cross browser testing compatibility)
+    * npm run report:merge: This will merge mochawesome reports into one json file
+    * npm run report:generate: This will generate HTML from JSON
+    * nrpm run report:copyScreenshots: This will copy cypress screenshots (for failed tests) to the needed directory (HTML Reports)
+
+For reporting there are other possibilities and by far the one we use is ReportPortal.io which is a realtime monitoring platform 
+
+2. **Docker**
+
+For docker we created a Dockerfile from official cypress image: ```cypress/browsers:node14.19.0-chrome100-ff99-edge```<br>
+We just copy package.json and needed cypress configuration files. The prefered way is to go with Docker so you can isolate dependencies.<br> To build the image prior to run the container for the tests see the stages described jenkins.gdsl (if we are using jenkins pipelines :-) )
+
+    * docker build -f Dockerfile -t cypress-chart-image:1.0.0 .
+    * docker run --privileged --ipc=host -v ${WORKSPACE}/docker:/cypress/results cypress-chart-image:1.0.0
+
+Volume ```${WORKSPACE}/docker``` so we can access the test results after test execution...

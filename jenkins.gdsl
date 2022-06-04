@@ -1,0 +1,16 @@
+node() {
+
+      stage('Checkout repository') {
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'WipeWorkspace']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '...', url: 'git@github.com:atypon/platform2.0-qa-em-challenge.git']]])
+      }
+
+      stage('Start Chart Application') {
+        //We need to dockerize the Chart Application then it would be more easy just create a compose file to start up bot test and application containers
+        //We may need to create a network bridge to have access to the chart application
+      }
+
+      stage('e2e Integration Tests'){
+            sh("docker build -f Dockerfile -t cypress-chart-image:1.0.0 .")
+            sh("docker run --privileged --ipc=host -v ${WORKSPACE}/docker:/cypress/results cypress-chart-image:1.0.0")
+        }
+    } 

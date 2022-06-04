@@ -36,6 +36,29 @@ context("API Testing on Graphs", () => {
     });
   });
 
+  it("Get graphs by date modified on descending order", () => {
+    cy.request({
+      method: "GET",
+      url: "/api/charts", // baseUrl is prepend to URL
+      qs: {
+        orderBy: "dateCreated",
+        order: "desc",
+      },
+    }).as("getGraphs");
+    cy.get("@getGraphs").then((todos) => {
+      expect(todos.status).to.eq(200);
+
+      todos.body.charts.forEach(function (e) {
+        date.push(e.created_at);
+        if (timestamp != null) {
+          assert.isTrue(new Date(e.created_at) > new Date(timestamp));
+        } else {
+          timestamp = e.created_at;
+        }
+      });
+    });
+  });
+
   it("Get graphs by date modified ascending order", () => {
     cy.request({
       method: "GET",
@@ -124,7 +147,7 @@ context("API Testing on Graphs", () => {
         });
       });
 
-    it("Not correct endpoint", () => {
+    it("Test 404 Response", () => {
       cy.request({
         method: "GET",
         url: "/api/chartsIn", // baseUrl is prepend to URL
