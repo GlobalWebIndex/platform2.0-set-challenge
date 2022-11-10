@@ -1,4 +1,4 @@
-# GWI QA Engineering Manager Challenge
+# GWI SET(Software Engineer in Test) Challenge
 
 ## Exercise: Charts page testing
 
@@ -28,7 +28,7 @@ In order to be able to run the application locally you have to:
 
 We prefer using the cypress e2e framework but any tool of choice would do.
 
-### QA Testing challenge
+### SET Testing challenge
 
 Please provide E2E & API testing for the `My Charts` app and endpoints.
 
@@ -61,6 +61,14 @@ Please provide E2E & API testing for the `My Charts` app and endpoints.
     | 400 | Client Error |
     | 404 | Not Found  |
     | 500 | Server Error |
+
+### Bonus
+
+1. #### Performance Tests
+Include a relevant performance test suite for above endpoints using any framework of your choice (though we prefer k6.io)
+
+2. #### CI /CD
+Could you provide a workflow that builds and starts application run your existing test suites and informs with the results back to the end user
 
 In case you are not able to implement something you would normally implement for time reasons, make it clear with a comment.
 Feel free to ask questions if something is not clear, please give your best shot on this task.
