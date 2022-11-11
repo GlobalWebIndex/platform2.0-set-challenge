@@ -18,8 +18,8 @@ Charts are a central piece of our platform. `My Charts` is a small app that allo
 In order to be able to run the application locally you have to:
 
 1. Install node version < 16 (due to a bug on [create-react-app](https://stackoverflow.com/questions/69693907/error-err-package-path-not-exported-package-subpath-lib-tokenize-is-not-d))
-2. Clone git repository: `git clone https://github.com/GlobalWebIndex/platform2.0-qa-em-challenge.git`
-3. Goto dir: `cd platform2.0-qa-em-challenge`
+2. Clone git repository: `git clone https://github.com/GlobalWebIndex/platform2.0-set-challenge.git`
+3. Goto dir: `cd platform2.0-set-challenge`
 4. Install dependencies: `npm install`
 5. Start application: `npm run start`
     - This creates and runs a server on <http://localhost:3001> and also
