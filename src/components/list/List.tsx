@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
-import { DummyListItem } from "./../../types/types";
+import { DummyListItem } from '../../types/types';
 import { format } from "date-fns";
 import "./List.css";
 
@@ -30,7 +30,10 @@ const List: React.FC<ListProps> = (props) => {
   }, [orderBy, props.searchTerm]);
 
   return (
-    <div className="root">
+    <div
+		className="root"
+		data-testid="tableRoot"
+	>
       <Grid
         container
         justifyContent="space-between"
@@ -40,6 +43,7 @@ const List: React.FC<ListProps> = (props) => {
         <Grid item xs={6}>
           <Typography variant="body1">
             <Button
+			  data-testid="shortByName"
               style={{
                 textTransform: "none",
                 fontSize: 18,
@@ -57,6 +61,7 @@ const List: React.FC<ListProps> = (props) => {
         <Grid item>
           <Typography variant="body1">
             <Button
+			  data-testid="shortByCreationDate"
               style={{
                 textTransform: "none",
                 fontSize: 18,
@@ -73,6 +78,7 @@ const List: React.FC<ListProps> = (props) => {
         <Grid item>
           <Typography variant="body1">
             <Button
+			  data-testid="shortByModificationDate"
               style={{
                 textTransform: "none",
                 fontSize: 18,
@@ -89,20 +95,24 @@ const List: React.FC<ListProps> = (props) => {
       </Grid>
       {list.map((item: DummyListItem, index: number) => (
         <Grid
+		  data-testid="dataRow"
           key={index}
           container
           justifyContent="space-between"
           alignItems="center"
         >
-          <Grid item xs={6}>
+          <Grid
+			  item xs={6}
+			  data-testid="chartName"
+		  >
             <Typography variant="body1">{item.name}</Typography>
           </Grid>
-          <Grid item>
+          <Grid item data-testid="chartCreated">
             <Typography variant="body1">
               {format(new Date(item.created_at), "d MMM yyyy")}
             </Typography>
           </Grid>
-          <Grid item>
+          <Grid item data-testid="chartLastMod">
             <Typography variant="body1">
               {format(new Date(item.created_at), "d MMM yyyy")}
             </Typography>
