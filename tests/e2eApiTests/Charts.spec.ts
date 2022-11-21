@@ -34,7 +34,7 @@ describe('The charts controller', () => {
 			expect(response.body).toMatchObject({ error: 'Please check your request parameters' });
 		});
 
-		it('should return not found with a non valid url', async () => {
+		it('should return not found for a non-valid url', async () => {
 			const response = await chartsClient.getCharts4xx();
 			expect(response.status).toBe(StatusCodes.NOT_FOUND);
 		});
@@ -49,6 +49,7 @@ describe('The charts controller', () => {
 				}
 			)
 			expect(response.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+			// expect(response.status).toBe(StatusCodes.NOT_IMPLEMENTED);
 			expect(response.body).toMatchObject({ error: 'Currently no order by dateCreated descending has been implemented' });
 		});
 	});
